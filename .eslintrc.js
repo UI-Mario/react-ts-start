@@ -25,6 +25,7 @@ module.exports = {
       node: {
         extensions: ['.tsx', '.ts', '.js', '.json'],
       },
+      typescript: {},
     },
   },
   rules: {
@@ -38,5 +39,6 @@ module.exports = {
         js: 'never',
       },
     ],
+    'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
   },
 };

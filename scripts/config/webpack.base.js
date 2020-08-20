@@ -1,6 +1,8 @@
 /* eslint-disable indent */
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+// eslint-disable-next-line import/no-extraneous-dependencies
+const CopyPlugin = require('copy-webpack-plugin');
 const { isDev, PROJECT_PATH } = require('../constant');
 
 const getCssLoaders = (importLoaders) => [
@@ -48,6 +50,13 @@ module.exports = {
     // 就可以不加文件后缀名了。webpack 会按照定义的后缀名的顺序依次处理文件，比如上文配置 ['.tsx', '.ts', '.js', '.json']，
     // webpack 会先尝试加上 .tsx后缀，看找得到文件不，如果找不到就依次尝试进行查找，所以我们在配置时尽量把最常用到的后缀放到最前面，可以缩短查找时间。
     extensions: ['.tsx', '.ts', '.js', '.json'],
+    // 路径别名，在tsconfig.json里也有设置
+    // 这里设置只是让编辑器不标红，有提示等
+    alias: {
+      Src: resolve(PROJECT_PATH, './src'),
+      Components: resolve(PROJECT_PATH, './src/components'),
+      Utils: resolve(PROJECT_PATH, './src/utils'),
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -71,6 +80,16 @@ module.exports = {
             minifyURLs: true,
             useShortDoctype: true,
           },
+    }),
+    new CopyPlugin({
+      patterns: [
+        {
+          context: resolve(PROJECT_PATH, './public'),
+          from: '*',
+          to: resolve(PROJECT_PATH, './dist'),
+          toType: 'dir',
+        },
+      ],
     }),
   ],
   module: {
