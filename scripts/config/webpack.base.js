@@ -37,11 +37,17 @@ const getCssLoaders = (importLoaders) => [
 
 module.exports = {
   entry: {
-    app: resolve(PROJECT_PATH, './src/app.js'),
+    app: resolve(PROJECT_PATH, './src/index.tsx'),
   },
   output: {
     filename: `js/[name]${isDev ? '' : '.[hash:8]'}.js`,
     path: resolve(PROJECT_PATH, './dist'),
+  },
+  resolve: {
+    // 新增了 resolve属性，在 extensions 中定义好文件后缀名后，在 import 某个文件的时候，
+    // 就可以不加文件后缀名了。webpack 会按照定义的后缀名的顺序依次处理文件，比如上文配置 ['.tsx', '.ts', '.js', '.json']，
+    // webpack 会先尝试加上 .tsx后缀，看找得到文件不，如果找不到就依次尝试进行查找，所以我们在配置时尽量把最常用到的后缀放到最前面，可以缩短查找时间。
+    extensions: ['.tsx', '.ts', '.js', '.json'],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -69,6 +75,12 @@ module.exports = {
   ],
   module: {
     rules: [
+      {
+        test: /\.(tsx?|js)$/,
+        loader: 'babel-loader',
+        options: { cacheDirectory: true },
+        exclude: /node_modules/,
+      },
       {
         test: /\.css$/,
         use: getCssLoaders(1),
