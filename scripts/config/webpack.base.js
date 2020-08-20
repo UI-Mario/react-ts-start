@@ -1,8 +1,20 @@
 /* eslint-disable indent */
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// eslint-disable-next-line import/no-extraneous-dependencies
+// 显示一个打包进度条
+const WebpackBar = require('webpackbar');
+// TODO: figure out why this happen(
+// ==>should be listed in the project's dependencies,
+// ==>not devDependencies.eslint import/no-extraneous-dependencies
+// NEW：fix it， add a line in .eslintrc.js(
+// ==>"import/no-extraneous-dependencies": ["error", {"devDependencies": true}])
+
+// 把src/下的资源copy到public/
 const CopyPlugin = require('copy-webpack-plugin');
+// 做了缓存，提高以后的编译速度
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+// 打包ts时提供错误提示
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const { isDev, PROJECT_PATH } = require('../constant');
 
 const getCssLoaders = (importLoaders) => [
@@ -91,6 +103,16 @@ module.exports = {
         },
       ],
     }),
+    new WebpackBar({
+      name: isDev ? '正在启动' : '正在打包',
+      color: '#fa8c16',
+    }),
+    new ForkTsCheckerWebpackPlugin({
+      typescript: {
+        configFile: resolve(PROJECT_PATH, './tsconfig.json'),
+      },
+    }),
+    new HardSourceWebpackPlugin(),
   ],
   module: {
     rules: [
