@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './app';
 
-ReactDOM.render(<App name="vortesnail" age={25} />, document.querySelector('#root'));
+import { Hello } from './components/Hello';
+
+ReactDOM.render(<Hello name="typescript" age={18} />, document.querySelector('#root'));

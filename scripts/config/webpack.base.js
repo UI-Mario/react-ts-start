@@ -15,7 +15,11 @@ const CopyPlugin = require('copy-webpack-plugin');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 // 打包ts时提供错误提示
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+
+// 启用这个会报错，暂时不明，留着以后学
+// const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const { isDev, PROJECT_PATH } = require('../constant');
+// 提供gzip压缩
 
 const getCssLoaders = (importLoaders) => [
   'style-loader',
@@ -113,6 +117,17 @@ module.exports = {
       },
     }),
     new HardSourceWebpackPlugin(),
+    // new CompressionWebpackPlugin({
+    //   asset: '[path].gz[query]',
+    //   algorithm: 'gzip',
+    //   test: new RegExp('\\.(js|css)$'),
+    //   // 只处理大于xx字节 的文件，默认：0
+    //   threshold: 10240,
+    //   // 示例：一个1024b大小的文件，压缩后大小为768b，minRatio : 0.75
+    //   minRatio: 0.8, // 默认: 0.8
+    //   // 是否删除源文件，默认: false
+    //   deleteOriginalAssets: false,
+    // }),
   ],
   module: {
     rules: [

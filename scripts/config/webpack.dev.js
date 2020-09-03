@@ -1,5 +1,5 @@
 const { merge } = require('webpack-merge');
-const proxySetting = require('Src/setProxy');
+// const proxySetting = require('Src/setProxy');
 const base = require('./webpack.base');
 const { SERVER_HOST, SERVER_PORT } = require('../constant');
 
@@ -14,6 +14,6 @@ module.exports = merge(base, {
     compress: true, // 是否启用 gzip 压缩
     // open: true, // 打开默认浏览器
     hot: true, // 热更新
-    proxy: { ...proxySetting }, // 启用代理
+    // proxy: { ...proxySetting }, // 启用代理
   },
 });
