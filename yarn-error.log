@@ -1,8 +1,8 @@
 Arguments: 
-  /usr/bin/node /usr/bin/yarn add redux-thunk @ types/redux-thunk
+  /usr/bin/node /usr/bin/yarn run --silent husky-run pre-commit
 
 PATH: 
-  /home/livio/.local/bin:/home/livio/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/livio/Android/Sdk/tools:/home/livio/Android/Sdk/tools/bin:/home/livio/Android/Sdk/platform-tools:/home/livio/Android/Sdk/emulator:/home/livio/Android/Sdk/tools:/home/livio/Android/Sdk/tools/bin:/home/livio/Android/Sdk/platform-tools:/home/livio/Android/Sdk/emulator
+  /usr/lib/git-core:/home/livio/.local/bin:/home/livio/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/livio/Android/Sdk/tools:/home/livio/Android/Sdk/tools/bin:/home/livio/Android/Sdk/platform-tools:/home/livio/Android/Sdk/emulator:/home/livio/Android/Sdk/tools:/home/livio/Android/Sdk/tools/bin:/home/livio/Android/Sdk/platform-tools:/home/livio/Android/Sdk/emulator
 
 Yarn version: 
   1.22.4
@@ -14,17 +14,12 @@ Platform:
   linux x64
 
 Trace: 
-  Error: https://registry.npm.taobao.org/@: Request "https://registry.npm.taobao.org/@" returned a 405
-      at Request.params.callback [as _callback] (/usr/lib/node_modules/yarn/lib/cli.js:66996:18)
-      at Request.self.callback (/usr/lib/node_modules/yarn/lib/cli.js:140748:22)
-      at Request.emit (events.js:314:20)
-      at Request.<anonymous> (/usr/lib/node_modules/yarn/lib/cli.js:141720:10)
-      at Request.emit (events.js:314:20)
-      at IncomingMessage.<anonymous> (/usr/lib/node_modules/yarn/lib/cli.js:141642:12)
-      at Object.onceWrapper (events.js:420:28)
-      at IncomingMessage.emit (events.js:326:22)
-      at endReadableNT (_stream_readable.js:1223:12)
-      at processTicksAndRejections (internal/process/task_queues.js:84:21)
+  SyntaxError: /home/livio/Code/react-ts-start/package.json: Unexpected token / in JSON at position 3043
+      at JSON.parse (<anonymous>)
+      at /usr/lib/node_modules/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /usr/lib/node_modules/yarn/lib/cli.js:321:13
 
 npm manifest: 
   {
@@ -34,6 +29,7 @@ npm manifest:
     "main": "index.js",
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
+      "lint": "eslint . --fix",
       "start": "cross-env NODE_ENV=development webpack-dev-server --config ./scripts/config/webpack.dev.js",
       "build": "cross-env NODE_ENV=production webpack --config ./scripts/config/webpack.prod.js"
     },
@@ -55,6 +51,8 @@ npm manifest:
       "@babel/runtime-corejs3": "^7.11.2",
       "@types/react-redux": "^7.1.9",
       "@types/redux": "^3.6.0",
+      "@types/redux-devtools-extension": "^2.13.2",
+      "@types/redux-thunk": "^2.1.0",
       "axios": "^0.19.2",
       "clean-webpack-plugin": "^3.0.0",
       "compression-webpack-plugin": "^5.0.1",
@@ -70,6 +68,8 @@ npm manifest:
       "react-dom": "^16.13.1",
       "react-redux": "^7.2.1",
       "redux": "^4.0.5",
+      "redux-devtools-extension": "^2.13.8",
+      "redux-thunk": "^2.3.0",
       "webpack": "^4.44.1",
       "webpack-dev-server": "^3.11.0",
       "webpack-merge": "^5.1.1"
@@ -115,11 +115,11 @@ npm manifest:
       "webpack-cli": "^3.3.12",
       "webpackbar": "^4.0.0"
     },
-    "husky": {
-      "hooks": {
-        "pre-commit": "lint-staged"
-      }
-    },
+    // "husky": {
+    //   "hooks": {
+    //     "pre-commit": 
+    //   }
+    // },
     "lint-staged": {
       "*.{ts,tsx,js}": [
         "eslint --config .eslintrc.js"
@@ -1273,6 +1273,20 @@ Lockfile:
     dependencies:
       "@types/prop-types" "*"
       csstype "^3.0.2"
+  
+  "@types/redux-devtools-extension@^2.13.2":
+    version "2.13.2"
+    resolved "https://registry.npm.taobao.org/@types/redux-devtools-extension/download/@types/redux-devtools-extension-2.13.2.tgz#b2e09a8c163b2b0f5072e6a5ac41474000df2111"
+    integrity sha1-suCajBY7Kw9QcualrEFHQADfIRE=
+    dependencies:
+      redux-devtools-extension "*"
+  
+  "@types/redux-thunk@^2.1.0":
+    version "2.1.0"
+    resolved "https://registry.npm.taobao.org/@types/redux-thunk/download/@types/redux-thunk-2.1.0.tgz#bc2b6e972961831afb82a9bf4f06726e351f9416"
+    integrity sha1-vCtulylhgxr7gqm/TwZybjUflBY=
+    dependencies:
+      redux-thunk "*"
   
   "@types/redux@^3.6.0":
     version "3.6.0"
@@ -7682,6 +7696,16 @@ Lockfile:
     dependencies:
       indent-string "^4.0.0"
       strip-indent "^3.0.0"
+  
+  redux-devtools-extension@*, redux-devtools-extension@^2.13.8:
+    version "2.13.8"
+    resolved "https://registry.npm.taobao.org/redux-devtools-extension/download/redux-devtools-extension-2.13.8.tgz#37b982688626e5e4993ff87220c9bbb7cd2d96e1"
+    integrity sha1-N7mCaIYm5eSZP/hyIMm7t80tluE=
+  
+  redux-thunk@*, redux-thunk@^2.3.0:
+    version "2.3.0"
+    resolved "https://registry.npm.taobao.org/redux-thunk/download/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
+    integrity sha1-UcLBmhhe1Rh6qpotCLZm0NZGdiI=
   
   redux@*, redux@^4.0.0, redux@^4.0.5:
     version "4.0.5"

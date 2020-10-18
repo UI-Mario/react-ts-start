@@ -1,22 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-interface ownProps {
-  value: number;
+interface stateProps {
+  value: any;
   onIncreaseClick: Function;
+  onDecreaseClick: Function;
 }
 
-class Counter extends React.Component<ownProps> {
+interface ownProps {}
+
+interface dispatchProps {}
+
+type Iprops = stateProps & ownProps & dispatchProps;
+
+class Counter extends React.Component<Iprops> {
   constructor(props: any) {
     super(props);
     this.state = {};
   }
 
   render() {
-    const { value, onIncreaseClick } = this.props;
+    const { value, onIncreaseClick, onDecreaseClick } = this.props;
     return (
       <div>
-        <span>{value}</span>
+        <span>{value.count}</span>
         <button
           type="button"
           onClick={() => {
@@ -25,6 +32,14 @@ class Counter extends React.Component<ownProps> {
         >
           Increase
         </button>
+        <button
+          type="button"
+          onClick={() => {
+            onDecreaseClick();
+          }}
+        >
+          Decrease
+        </button>
       </div>
     );
   }
@@ -32,6 +47,7 @@ class Counter extends React.Component<ownProps> {
 
 // Action Creator
 const increaseAction = { type: 'increase' };
+const decreaseAction = { type: 'decrease' };
 
 function mapStateToProps(state: any) {
   return {
@@ -42,7 +58,9 @@ function mapStateToProps(state: any) {
 function mapDispatchToProps(dispatch: any) {
   return {
     onIncreaseClick: () => dispatch(increaseAction),
+    onDecreaseClick: () => dispatch(decreaseAction),
   };
 }
 
+// eslint-disable-next-line import/prefer-default-export
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);

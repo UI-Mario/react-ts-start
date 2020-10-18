@@ -1,15 +1,10 @@
 import React from 'react';
+import Counter from './components/counter/Counter';
 
-interface IProps {
-  name: string;
-  age: number;
-}
-
-function App(props: IProps) {
-  const { name, age } = props;
+function App() {
   return (
     <div className="app">
-      <span>{`Hello! I'm ${name}, ${age} years old.`}</span>
+      <Counter />
     </div>
   );
 }

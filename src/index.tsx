@@ -6,7 +6,7 @@ import App from './app';
 
 ReactDOM.render(
   <Provider store={store}>
-    <App name="typescript" age={18} />
+    <App />
   </Provider>,
-  document.querySelector('#root')
+  document.querySelector('#root'),
 );
