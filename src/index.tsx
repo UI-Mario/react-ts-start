@@ -1,6 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import App from './app';
 
-import { Hello } from './components/Hello';
-
-ReactDOM.render(<Hello name="typescript" age={18} />, document.querySelector('#root'));
+ReactDOM.render(
+  <Provider store={store}>
+    <App name="typescript" age={18} />
+  </Provider>,
+  document.querySelector('#root')
+);
