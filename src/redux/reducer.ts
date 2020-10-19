@@ -5,4 +5,6 @@ const reducer = combineReducers({
   count: countReducer,
 });
 
+export type ReduxState = ReturnType<typeof reducer>;
+
 export default reducer;

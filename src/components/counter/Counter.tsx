@@ -1,20 +1,22 @@
+/* eslint-disable no-use-before-define */
 import React from 'react';
+// 这是抽什么风，告诉我never used
+import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
+import { ReduxState } from 'Src/redux/reducer';
+import { actionDecrease, actionIncrease } from './action';
 
-interface stateProps {
-  value: any;
-  onIncreaseClick: Function;
-  onDecreaseClick: Function;
-}
+// 真正从父组件获取的props
+interface CounterProps { }
 
-interface ownProps {}
+interface CounterState {}
 
-interface dispatchProps {}
+type Iprops = ReturnType<typeof mapDispatchToProps>
+  & ReturnType<typeof mapStateToProps>
+  & CounterProps;
 
-type Iprops = stateProps & ownProps & dispatchProps;
-
-class Counter extends React.Component<Iprops> {
-  constructor(props: any) {
+class Counter extends React.Component<Iprops, CounterState> {
+  constructor(props: Iprops) {
     super(props);
     this.state = {};
   }
@@ -45,20 +47,16 @@ class Counter extends React.Component<Iprops> {
   }
 }
 
-// Action Creator
-const increaseAction = { type: 'increase' };
-const decreaseAction = { type: 'decrease' };
-
-function mapStateToProps(state: any) {
+function mapStateToProps(state: ReduxState) {
   return {
     value: state.count,
   };
 }
 
-function mapDispatchToProps(dispatch: any) {
+function mapDispatchToProps(dispatch: Dispatch) {
   return {
-    onIncreaseClick: () => dispatch(increaseAction),
-    onDecreaseClick: () => dispatch(decreaseAction),
+    onIncreaseClick: () => dispatch(actionIncrease()),
+    onDecreaseClick: () => dispatch(actionDecrease()),
   };
 }
 
