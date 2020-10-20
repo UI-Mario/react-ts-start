@@ -1,25 +1,30 @@
 Arguments: 
-  /usr/bin/node /usr/bin/yarn run --silent husky-run pre-commit
+  /Users/codemao/.nvm/versions/node/v14.7.0/bin/node /usr/local/Cellar/yarn/1.22.4/libexec/bin/yarn.js add @types/loadsh
 
 PATH: 
-  /usr/lib/git-core:/home/livio/.local/bin:/home/livio/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/livio/Android/Sdk/tools:/home/livio/Android/Sdk/tools/bin:/home/livio/Android/Sdk/platform-tools:/home/livio/Android/Sdk/emulator:/home/livio/Android/Sdk/tools:/home/livio/Android/Sdk/tools/bin:/home/livio/Android/Sdk/platform-tools:/home/livio/Android/Sdk/emulator
+  /Users/codemao/.nvm/versions/node/v14.7.0/bin:/usr/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/codemao/.nvm/versions/node/v14.7.0/bin:/usr/local/sbin:/Users/codemao/codemao/Arcanist/arcanist/bin:/Users/codemao/codemao/Arcanist/arcanist/bin
 
 Yarn version: 
   1.22.4
 
 Node version: 
-  12.19.0
+  14.7.0
 
 Platform: 
-  linux x64
+  darwin x64
 
 Trace: 
-  SyntaxError: /home/livio/Code/react-ts-start/package.json: Unexpected token / in JSON at position 3043
-      at JSON.parse (<anonymous>)
-      at /usr/lib/node_modules/yarn/lib/cli.js:1625:59
-      at Generator.next (<anonymous>)
-      at step (/usr/lib/node_modules/yarn/lib/cli.js:310:30)
-      at /usr/lib/node_modules/yarn/lib/cli.js:321:13
+  Error: https://registry.npm.taobao.org/@types%2floadsh: Not found
+      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.22.4/libexec/lib/cli.js:66987:18)
+      at Request.self.callback (/usr/local/Cellar/yarn/1.22.4/libexec/lib/cli.js:140748:22)
+      at Request.emit (events.js:314:20)
+      at Request.<anonymous> (/usr/local/Cellar/yarn/1.22.4/libexec/lib/cli.js:141720:10)
+      at Request.emit (events.js:314:20)
+      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.22.4/libexec/lib/cli.js:141642:12)
+      at Object.onceWrapper (events.js:420:28)
+      at IncomingMessage.emit (events.js:326:22)
+      at endReadableNT (_stream_readable.js:1244:12)
+      at processTicksAndRejections (internal/process/task_queues.js:80:21)
 
 npm manifest: 
   {
@@ -115,11 +120,6 @@ npm manifest:
       "webpack-cli": "^3.3.12",
       "webpackbar": "^4.0.0"
     },
-    // "husky": {
-    //   "hooks": {
-    //     "pre-commit": 
-    //   }
-    // },
     "lint-staged": {
       "*.{ts,tsx,js}": [
         "eslint --config .eslintrc.js"
