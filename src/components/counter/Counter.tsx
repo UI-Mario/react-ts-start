@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
 import React from 'react';
 // 这是抽什么风，告诉我never used
@@ -6,14 +7,17 @@ import { connect } from 'react-redux';
 import { ReduxState } from 'Src/redux/reducer';
 import { actionDecrease, actionIncrease } from './action';
 
-// 真正从父组件获取的props
+// 真正从父组件获取的props，或者叫ownProps
 interface CounterProps { }
 
 interface CounterState {}
 
+interface routeProps {}
+
 type Iprops = ReturnType<typeof mapDispatchToProps>
   & ReturnType<typeof mapStateToProps>
-  & CounterProps;
+  & CounterProps
+  & routeProps;
 
 class Counter extends React.Component<Iprops, CounterState> {
   constructor(props: Iprops) {
@@ -47,13 +51,15 @@ class Counter extends React.Component<Iprops, CounterState> {
   }
 }
 
+// 返回一个对象，里面的每一个键值对就是一个对象
 function mapStateToProps(state: ReduxState) {
   return {
     value: state.count,
   };
 }
 
-function mapDispatchToProps(dispatch: Dispatch) {
+// 可以返回函数或对象
+function mapDispatchToProps(dispatch: Dispatch, ownProps: CounterProps) {
   return {
     onIncreaseClick: () => dispatch(actionIncrease()),
     onDecreaseClick: () => dispatch(actionDecrease()),
@@ -61,4 +67,5 @@ function mapDispatchToProps(dispatch: Dispatch) {
 }
 
 // eslint-disable-next-line import/prefer-default-export
+// 这些api自动完成subscribe
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
