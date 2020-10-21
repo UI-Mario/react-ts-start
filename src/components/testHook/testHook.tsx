@@ -15,6 +15,9 @@ function TestHook() {
         productName: 'microsoft',
       },
     ],
+    customer: {
+      name: 'UI-Mario',
+    },
   });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -35,6 +38,12 @@ function TestHook() {
     fetchData();
   }, []);
 
+  const handleSetdata = () => {
+    // Object.assign和扩展运算符，对于对象内的对象，都是浅拷贝
+    const newData = { ...data };
+    newData.products[0].productName = '111';
+    setData(newData);
+  };
   return (
     <div>
       {isError && <div>出错了...</div>}
@@ -44,6 +53,9 @@ function TestHook() {
           <li key={i.productId}>{i.productName}</li>
         ))}
       </ul>
+      <button type="button" onClick={handleSetdata}>
+        change name
+      </button>
     </div>
   );
 }
