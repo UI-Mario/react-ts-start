@@ -39,7 +39,7 @@ function TestHook() {
   }, []);
 
   const handleSetdata = () => {
-    // Object.assign和扩展运算符，对于对象内的对象，都是浅拷贝
+    // Object.assign和扩展运算符，对于对象内的引用类型，都是浅拷贝
     const newData = { ...data };
     newData.products[0].productName = '111';
     setData(newData);
