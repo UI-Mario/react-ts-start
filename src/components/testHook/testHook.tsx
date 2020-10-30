@@ -20,8 +20,15 @@ function TestHook() {
     },
   });
 
+  // 太多useState很烦
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+
+  const [state, setState] = useState({
+    name: 'Mary',
+    surname: 'Poppins',
+    width: window.innerWidth,
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,6 +53,11 @@ function TestHook() {
   };
   return (
     <div>
+      <span>
+        {state.name}
+        {state.surname}
+        {state.width}
+      </span>
       {isError && <div>出错了...</div>}
       {isLoading ? <div>is loading</div> : null}
       <ul>

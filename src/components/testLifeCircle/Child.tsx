@@ -1,6 +1,7 @@
 import React from 'react';
 
 /**
+ * https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html
  * unsafe: componnetWillMount, componentWillUpdate, componentWillReceiveProps
  */
 
