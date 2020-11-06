@@ -3,6 +3,12 @@ import { Page1 } from '../view/testRouterView/Page1';
 import { Page2 } from '../view/testRouterView/Page2';
 import { Child } from '../view/testRouterView/Child';
 
+/**
+ * 看了react-route-config的readme，这还不如不用呢
+ * 直接用react-router-dom
+ * 顶多就是配置一下，不把route和link写一起
+ */
+
 export const routes = [
   // { path: '/', exact: true, render: () => <Redirect to="/page1" /> },
   { path: '/page1', component: Page1 },
@@ -17,25 +23,3 @@ export const routes = [
     ],
   },
 ];
-// const routes = [
-//     {
-//       component: Root,
-//       routes: [
-//         {
-//           path: "/",
-//           exact: true,
-//           component: Home
-//         },
-//         {
-//           path: "/child/:id",
-//           component: Child,
-//           routes: [
-//             {
-//               path: "/child/:id/grand-child",
-//               component: GrandChild
-//             }
-//           ]
-//         }
-//       ]
-//     }
-//   ];
