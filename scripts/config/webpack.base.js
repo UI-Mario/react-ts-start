@@ -16,7 +16,7 @@ const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 // 打包ts时提供错误提示
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
-// 启用这个会报错，暂时不明，留着以后学
+// FIXME:启用这个会报错，暂时不明，留着以后学
 // const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const { isDev, PROJECT_PATH } = require('../constant');
 // 提供gzip压缩
