@@ -26,6 +26,7 @@ class Counter extends React.Component<Iprops, CounterState> {
   }
 
   render() {
+    console.log('this is render');
     const { value, onIncreaseClick, onDecreaseClick } = this.props;
     return (
       <div>
@@ -53,6 +54,7 @@ class Counter extends React.Component<Iprops, CounterState> {
 
 // 返回一个对象，里面的每一个键值对就是一个对象
 function mapStateToProps(state: ReduxState) {
+  console.log('this is state2props');
   return {
     value: state.count,
   };
@@ -60,6 +62,7 @@ function mapStateToProps(state: ReduxState) {
 
 // 可以返回函数或对象
 function mapDispatchToProps(dispatch: Dispatch, ownProps: CounterProps) {
+  console.log('this is dispatch2props');
   return {
     onIncreaseClick: () => dispatch(actionIncrease()),
     onDecreaseClick: () => dispatch(actionDecrease()),
