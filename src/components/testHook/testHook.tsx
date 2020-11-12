@@ -1,16 +1,16 @@
 /* eslint-disable max-len */
 import React, {
-  useCallback, useEffect, useReducer, useState,
+  useCallback, useEffect, useReducer, useRef, useState,
 } from 'react';
 import axios from 'axios';
 
 // useState来传数据================y
-// useEffect来模拟生命周期==========
+// useEffect来模拟生命周期==========half
 // useContext跳过=================
 // useReducer感觉用的不普及，因为缺乏统一管理啥的吧，代码还是挺简单的======y
 // useCallback
 // useMemo
-// useRef
+// useRef========================y
 // useImperativeHandle
 // useLayoutEffect
 // useDebugValue
@@ -104,6 +104,13 @@ function TestHook() {
   };
   const [testUseReducer, dispatch] = useReducer(reducer, initialState);
 
+  const textEl = useRef(null);
+  const changeText = () => {
+    // console.log(textEl)
+    // TODO:这写得这么奇怪是因为不知道ref是否存在，找个好点写法
+    (textEl.current as unknown as HTMLElement).textContent += '1';
+  };
+
   return (
     <div>
       <h5>-------------useState:</h5>
@@ -143,6 +150,9 @@ function TestHook() {
       <button type="button" onClick={() => dispatch({ type: 'increment' })}>
         +
       </button>
+      <h5>-------------test of useRef</h5>
+      <p ref={textEl}>gggg</p>
+      <button type="button" onClick={changeText}>change text</button>
     </div>
   );
 }
