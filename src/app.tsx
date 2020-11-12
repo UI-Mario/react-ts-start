@@ -51,6 +51,8 @@ function App() {
         <Route path="/child" component={Child} />
         <h3>============================intl=============================</h3>
         <p>TODO</p>
+        <h3>============================react-css-modules=============================</h3>
+        <p>TODO</p>
       </div>
     </BrowserRouter>
   // </IntlProvider>
