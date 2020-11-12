@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --fix",
-    "start": "cross-env NODE_ENV=development webpack-dev-server --config ./scripts/config/webpack.dev.js",
-    "build": "cross-env NODE_ENV=production webpack --config ./scripts/config/webpack.prod.js"
+    "start": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack/config/webpack.dev.js",
+    "test": "/bin/bash ./scripts/dev_server.sh",
+    "build": "cross-env NODE_ENV=production webpack --config ./webpack/config/webpack.prod.js"
   },
   "repository": {
     "type": "git",
