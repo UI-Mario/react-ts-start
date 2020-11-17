@@ -3,6 +3,9 @@ import React, {
   useCallback, useEffect, useReducer, useRef, useState,
 } from 'react';
 import axios from 'axios';
+// redux-watch这个包只是为了测试写一个.d.ts文件，⚠️：.d.ts文件/文件夹必须在tsconfig里声明，
+// 目前使用方法是tsconfig的include里写进types文件夹
+import watch from 'redux-watch';
 
 import { testReducer, initialState } from './testReducer';
 
@@ -169,7 +172,7 @@ function TestHook() {
       <h5>-------------test of useRef</h5>
       <p ref={textEl}>gggg</p>
       <button type="button" onClick={changeText}>change text</button>
-      <h5>-------------create your own hook</h5>
+      <h5>-------------custom hook</h5>
       {/* TODO: */}
     </div>
   );
