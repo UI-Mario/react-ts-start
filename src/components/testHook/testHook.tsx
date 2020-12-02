@@ -123,11 +123,16 @@ function TestHook() {
    */
   const [testUseReducer, dispatch] = useReducer(testReducer, initialState);
 
-  const textEl = useRef(null);
+  const textEl = useRef<HTMLParagraphElement>(null);
   const changeText = () => {
     // console.log(textEl)
-    // TODO:这写得这么奇怪是因为不知道ref是否存在，找个好点写法（ts专有）
-    (textEl.current as unknown as HTMLElement).textContent += '1';
+    // 这写得这么奇怪是因为不知道ref是否存在，找个好点写法（ts专有）
+    // (textEl.current as unknown as HTMLElement).textContent += '1';
+    // 改进后的写法：
+    const { current: textElCur } = textEl;
+    if (textElCur) {
+      textElCur.textContent += '1';
+    }
   };
 
   return (

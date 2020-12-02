@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './test.scss';
+
 /**
  * https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html
  * unsafe: componnetWillMount, componentWillUpdate, componentWillReceiveProps
@@ -33,10 +35,11 @@ export default class child extends React.Component<any, childState> {
   }
 
   render() {
+    const { child } = this.state;
     console.log('this is child render');
     return (
       <div>
-        <span>{this.state.child}</span>
+        <span>{child}</span>
         <button
           type="button"
           onClick={() => {
