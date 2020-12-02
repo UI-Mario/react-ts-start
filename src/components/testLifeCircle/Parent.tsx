@@ -32,7 +32,7 @@ export default class parent extends React.Component<any, parentState> {
   }
 
   render() {
-    // no-shadow配合destructing这个简直反智，具体参考child
+    // no-shadow配合destructuring这个简直反智，具体参考child
     const { parent: par } = this.state;
     console.log('this is parent render');
     return (
