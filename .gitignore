@@ -19,7 +19,7 @@ typings/
 # build artifacts
 # 这个反智的写法我都要吐了
 dist/
-dist/js
+dist/js/
 
 build/
 webpack/dll/
