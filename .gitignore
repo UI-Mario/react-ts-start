@@ -17,7 +17,10 @@ typings/
 .vscode/
 
 # build artifacts
+# 这个反智的写法我都要吐了
 dist/
+dist/js
+
 build/
 webpack/dll/
 stats.json
