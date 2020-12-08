@@ -1,2 +1,28 @@
-/node_modules
-/dist/**
+# generic editing tools
+tags
+
+#mac
+*.DS_Store
+
+# libs
+libs/
+
+# build tools
+node_modules/
+typings/
+
+# logfiles
+*.log
+.idea/
+.vscode/
+
+# build artifacts
+dist/
+build/
+webpack/dll/
+stats.json
+lib/
+
+# Docs
+doc/
+
