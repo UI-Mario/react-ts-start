@@ -5,6 +5,8 @@ const { SERVER_HOST, SERVER_PORT } = require('../constant');
 
 module.exports = merge(base, {
   mode: 'development',
+  // TODO:为啥前面要加一个#呢？跟官网不符呀？
+  // https://webpack.docschina.org/configuration/devtool/
   devtool: '#eval-source-map',
   devServer: {
     host: SERVER_HOST, // 指定 host，不设置的话默认是 localhost

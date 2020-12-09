@@ -137,6 +137,7 @@ function TestHook() {
 
   return (
     <div>
+      <img src="./test_url_loader.png" alt="png to test url_loader" />
       <h5>-------------useState:</h5>
       <span>
         {state.name}
