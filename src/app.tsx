@@ -13,6 +13,7 @@ import { Page2 } from './view/testRouterView/Page2';
 import { Child } from './view/testRouterView/Child';
 
 import { TestRef } from './components/testRef/testRef';
+import { TestPreLoadComponent } from './components/testPreLoad/testPreLoad';
 
 // import { routes } from './router/router';
 
@@ -20,6 +21,7 @@ function App() {
   return (
     // <IntlProvider locale={usersLocale} messages={trans}>
     <BrowserRouter>
+      <TestPreLoadComponent />
       {/* HashRouter里面一定要有一个根节点，不能直接写Route */}
       <div>
         <h3>============================redux=============================</h3>
