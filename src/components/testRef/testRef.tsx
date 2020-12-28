@@ -4,6 +4,7 @@ import React, { createRef, RefObject } from 'react';
 
 /**
  * 必须的用类组件才能挂载上去，因为函数组件没有实例
+ * 但是函数式组件可以用useRef来实现
  */
 class TestRefFuctionComponent extends React.Component {
   constructor(props: any) {

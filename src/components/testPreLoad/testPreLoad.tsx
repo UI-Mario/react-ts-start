@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable camelcase */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from 'react';
 
@@ -15,7 +17,7 @@ export const TestPreLoadComponent = ():JSX.Element => {
   return (
     <div>
       <div
-        onClick={(_e) => {
+        onClick={() => {
           if (bg === nor_bg) {
             setBg(act_bg);
           } else {
