@@ -6,6 +6,7 @@ import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { ReduxState } from 'Src/redux/reducer';
 import { actionDecrease, actionIncrease } from './action';
+import Store from '../../redux/store';
 
 // 真正从父组件获取的props，或者叫ownProps
 interface CounterProps { }
@@ -46,6 +47,15 @@ class Counter extends React.Component<Iprops, CounterState> {
           }}
         >
           Decrease
+        </button>
+        {/* 算是个小测试吧，因为redux的getstate输出的不是拷贝，直接是引用，所以可以改 */}
+        <button
+          type="button"
+          onClick={() => {
+            Store.getState().count.count = 100;
+          }}
+        >
+          change store
         </button>
       </div>
     );
