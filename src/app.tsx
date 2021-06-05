@@ -14,6 +14,7 @@ import { Child } from './view/testRouterView/Child';
 
 import { TestRef } from './components/testRef/testRef';
 import { TestPreLoadComponent } from './components/testPreLoad/testPreLoad';
+import { TreeMap } from './components/treemap/treemap';
 
 // import { routes } from './router/router';
 
@@ -24,6 +25,7 @@ function App() {
       <TestPreLoadComponent />
       {/* HashRouter里面一定要有一个根节点，不能直接写Route */}
       <div>
+        <TreeMap />
         <h3>============================redux=============================</h3>
         <Counter />
         <h3>============================hook=============================</h3>
